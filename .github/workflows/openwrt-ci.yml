@@ -13,10 +13,10 @@ on:
   push:
     branches: 
       - master
-  schedule:
-    - cron: 0 20 * * *
-  release:
-    types: [published]
+  # schedule:
+    # - cron: 0 20 * * *
+  # release:
+    # types: [published]
 
 jobs:
   build:
@@ -58,13 +58,7 @@ jobs:
           run: |
           git remote add openwrt https://github.com/coolsnowwolf/lede.git
           git pull openwrt master
-          git remote -v
-
-      - name: Update feeds
-        run: |
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-
+          
       - name: Costom configure file
         run: |
           rm -f ./.config*
